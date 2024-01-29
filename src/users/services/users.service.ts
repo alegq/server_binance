@@ -30,8 +30,12 @@ export class UsersService {
     return this.usersRepository.find();
   }
 
-  findOne(id: number): Promise<User | null> {
-    return this.usersRepository.findOneBy({ id });
+  async findOne(email: string) {
+    return this.usersRepository.findOneBy({ email: email });
+  }
+
+  async findOneId(id: number) {
+    return this.usersRepository.findOneById(id);
   }
 
   async remove(id: number): Promise<void> {
